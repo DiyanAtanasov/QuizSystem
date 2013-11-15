@@ -65,7 +65,7 @@ namespace QuizSystem.Web.Controllers
         public ActionResult Solve(int quizId)
         {
             QuizSolveModel quiz = this.context.Quizzes.All()
-                .Where(x => x.Id == quizId)
+                .Where(x => x.Id == quizId && x.State == QuizState.Active)
                 .Select(ModelConvertor.QuizToSolveModel)
                 .First();
 
@@ -82,8 +82,9 @@ namespace QuizSystem.Web.Controllers
 
             QuizSolvedModel solvedQuiz =
                 this.context.Quizzes.All()
-                .Where(x => x.Id == quizId)
-                .Select(ModelConvertor.QuizToSolvedModel).First();
+                .Where(x => x.Id == quizId && x.State == QuizState.Active)
+                .Select(ModelConvertor.QuizToSolvedModel)
+                .First();
 
             Dictionary<int,int> answeredQuestions =
                 this.Request.Form.AllKeys
@@ -115,8 +116,9 @@ namespace QuizSystem.Web.Controllers
         public ActionResult Vote(int quizId, int value)
         {
             string userId = this.User.Identity.GetUserId();
+            Quiz quiz = this.context.Quizzes.GetById(quizId);
 
-            if (userId == null)
+            if (userId == null || quiz.State == QuizState.Active)
             {
                 throw new HttpException(400, "You are not authorized.");
             }
@@ -126,7 +128,6 @@ namespace QuizSystem.Web.Controllers
                 throw new HttpException(400, "You already voted for this quiz.");
             }
 
-            Quiz quiz = this.context.Quizzes.GetById(quizId);
             quiz.Rating += value;
             quiz.Votes.Add(new Vote { UserId = userId, Value = value });
 
@@ -149,7 +150,7 @@ namespace QuizSystem.Web.Controllers
             string userId = this.User.Identity.GetUserId();
 
             var activeQuizzes = this.context.Results.All()
-                .Where(x => x.UserId == userId)
+                .Where(x => x.UserId == userId && x.Quiz.State == QuizState.Active)
                 .Select(ModelConvertor.ResultToQuizArchiveModel);
 
             var dataPager = new SimpleDataPager<QuizArchiveModel>(activeQuizzes, 10)
@@ -164,7 +165,7 @@ namespace QuizSystem.Web.Controllers
         {
             QuizDetailsModel model = 
                 this.context.Quizzes.All()
-                .Where(x => x.Id == quizId)
+                .Where(x => x.Id == quizId && x.State == QuizState.Active)
                 .Select(ModelConvertor.QuizToDetailsModel)
                 .First();
 

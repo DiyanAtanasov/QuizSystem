@@ -72,6 +72,16 @@ namespace QuizSystem.Web.Areas.Administration.Controllers
             this.ValidateAdmin();
 
             Quiz quiz = this.context.Quizzes.GetById(quizId);
+
+            if (quiz.State == QuizState.Active)
+            {
+                quiz.Results.ToList().ForEach(x => this.context.Results.RemoveItem(x));
+                quiz.Votes.ToList().ForEach(x => this.context.Votes.RemoveItem(x));
+                quiz.Comments.ToList().ForEach(x => this.context.Comments.RemoveItem(x));
+
+                quiz.Rating = 0;
+            }
+
             quiz.State = QuizState.Rejected;
             quiz.LastModfication = DateTime.Now;
             this.context.Quizzes.Update(quiz);

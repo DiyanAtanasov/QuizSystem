@@ -35,6 +35,8 @@ namespace QuizSystem.Data
 
             modelBuilder.Entity<Comment>().Property(x => x.Content).IsRequired().HasMaxLength(300);
 
+            modelBuilder.Entity<UserMessage>().Property(x => x.Content).IsRequired().HasMaxLength(300);
+
             base.OnModelCreating(modelBuilder);
         }
     }
