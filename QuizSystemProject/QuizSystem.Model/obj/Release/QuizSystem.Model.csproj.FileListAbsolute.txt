@@ -12,3 +12,17 @@ F:\MVCProjects\QuizSystemProject\QuizSystem.Model\bin\Release\Microsoft.AspNet.I
 F:\MVCProjects\QuizSystemProject\QuizSystem.Model\obj\Release\QuizSystem.Model.csprojResolveAssemblyReference.cache
 F:\MVCProjects\QuizSystemProject\QuizSystem.Model\obj\Release\QuizSystem.Model.dll
 F:\MVCProjects\QuizSystemProject\QuizSystem.Model\obj\Release\QuizSystem.Model.pdb
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\QuizSystem.Model.dll.config
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\QuizSystem.Model.dll
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\QuizSystem.Model.pdb
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\EntityFramework.dll
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\EntityFramework.SqlServer.dll
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\EntityFramework.xml
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\EntityFramework.SqlServer.xml
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\obj\Release\QuizSystem.Model.csprojResolveAssemblyReference.cache
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\obj\Release\QuizSystem.Model.dll
+F:\MVCProjects\CurrentVersion\QuizSystemProject\QuizSystem.Model\obj\Release\QuizSystem.Model.pdb

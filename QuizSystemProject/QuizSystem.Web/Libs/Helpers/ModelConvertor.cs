@@ -111,7 +111,7 @@ namespace QuizSystem.Web.Libs.Helpers
                         Questions = x.Questions.Count,
                         Creator = x.Creator.UserName,
                         SolvedCount = x.Results.Count,
-                        AverageScore = x.Results.Sum(r => r.FirstResult) / x.Results.Count,
+                        AverageScore = ((double?)x.Results.Sum(r => r.FirstResult)) / x.Results.Count,
                         PublishDate = x.LastModfication,
                         Rating = x.Rating
                     };

@@ -17,7 +17,7 @@
     <span>Category : <strong>@Model.Category</strong></span>
     <span>Creator : <strong>@Model.Creator</strong></span>
     <span>Published On : <strong>@Model.PublishDate.ToString("yyyy-MMM-dd")</strong></span>
-    <span>Average Score : <strong>@(Model.AverageScore != null ? Model.AverageScore.ToString() + " %" : "N/A") </strong></span>
+    <span>Average Score : <strong>@(Model.AverageScore != null ? String.Format("{0:F2} %", Model.AverageScore) : "N/A") </strong></span>
     <span>Solved : <strong>@Model.SolvedCount</strong> time(s)</span>
 </div>
 </div>

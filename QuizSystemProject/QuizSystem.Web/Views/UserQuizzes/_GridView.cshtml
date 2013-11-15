@@ -46,7 +46,7 @@
                     <td>
                         @if(item.AverageScore != null)
                         {
-                            @(item.AverageScore +  " %")
+                            @(String.Format("{0:F2} %", item.AverageScore))
                         }
                         else 
                         {

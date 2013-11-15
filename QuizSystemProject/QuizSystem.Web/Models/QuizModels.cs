@@ -109,9 +109,10 @@ namespace QuizSystem.Web.Models
 
         public List<QuestionSolvedModel> Questions { get; set; }
 
-        public int CalculateResult()
+        public double CalculateResult()
         {
-            int result = (int)(((double)this.Points / this.Questions.Count) * 100);
+            double result = ((double)this.Points / this.Questions.Count) * 100;
+            result = Math.Round(result, 2);
             return result >= 0 ? result : 0;
         }
     }
@@ -124,9 +125,9 @@ namespace QuizSystem.Web.Models
 
         public string Title { get; set; }
 
-        public int FirstResult { get; set; }
+        public double FirstResult { get; set; }
 
-        public int LastResult { get; set; }
+        public double LastResult { get; set; }
 
         public int Comments { get; set; }
 

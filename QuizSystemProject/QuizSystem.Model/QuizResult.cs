@@ -10,9 +10,9 @@ namespace QuizSystem.Model
     {
         public int Id { get; set; }
 
-        public int FirstResult { get; set; }
+        public double FirstResult { get; set; }
 
-        public int LastResult { get; set; }
+        public double LastResult { get; set; }
 
         public string UserId { get; set; }
         public virtual QuizUser User { get; set; }
