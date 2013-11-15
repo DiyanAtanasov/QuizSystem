@@ -1,0 +1,13 @@
+﻿@model CategoryAdminModel
+<div id="c-@Model.Id">
+    <div class="view-mode">
+            <p>@Model.Name</p>
+        <input id="del-btn" type="button" value="Delete" />
+        <input id="edit-btn" type="button" value="Edit" />
+    </div>
+    <div class="edit-mode form-tab">
+        @Html.ValidationField(x => x.Name, "input", new { type = "text" })
+        <input id="del-btn" type="button" value="Cancel" />
+        <input id="edit-btn" type="button" value="Update" />
+    </div>
+</div>      

@@ -1,0 +1,22 @@
+﻿@model SimpleDataPager<QuizAdminViewModel>
+<h2>Quizzes Admin Panel</h2>
+@Html.Partial("_GridViewFilters", Model)
+<div id="grid-container">
+    @Html.Partial("_GridView", Model)
+</div>
+@section Scripts {
+<script>
+    eventUtils.setEvent(document.getElementById("grid-container"), "submit", function (evt) {
+        var that = this;
+        var confirmWindow = htmlUtils.confirmWindow('Do you want to DELETE this Quiz and all of its questions ?',
+            function () {
+                evt.target.submit();
+            }, function () {
+                htmlUtils.hideOverlayBox(2);
+            });
+
+        htmlUtils.showInOverlayBox(confirmWindow, 2, that);
+        eventUtils.preventDefault(evt);
+    });
+</script>
+}

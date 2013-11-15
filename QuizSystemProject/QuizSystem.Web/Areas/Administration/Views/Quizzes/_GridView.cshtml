@@ -1,0 +1,62 @@
+﻿@model SimpleDataPager<QuizAdminViewModel>
+<table class="grid-view">
+    <thead>
+        <tr>
+            <th class="size1">
+                @Html.SortLink(x => x.Category)
+            </th>
+            <th class="size3">
+                @Html.SortLink(x => x.Title)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.Questions, "Quest.")
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.Creator)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.State)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.LastModifiedBefore, "Inactive From")
+            </th>
+            <th class="size2">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="7"> 
+                <div class="total-results">Total Results : @Model.TotalResults</div>
+                @Html.GetPageMenu()
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @if (Model.Items.Count() > 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Category</td>
+                    <td class="left">@item.Title</td>
+                    <td>@item.Questions</td>
+                    <td>@item.Creator</td>
+                    <td>@item.State</td>
+                    <td>@item.LastModifiedBefore day(s)</td>
+                    <td>
+                        <a href="/UserQuizzes/Edit?quizId=@item.Id" class="button">Edit</a>
+                        <a href="/UserQuizzes/Preview?quizId=@item.Id" class="button">Preview</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">No Results Found</td>
+            </tr>
+        }
+    </tbody>
+</table>

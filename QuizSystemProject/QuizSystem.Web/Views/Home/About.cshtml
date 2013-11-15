@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MessageViewModel>
+<h2>About this site</h2>
+<hr />
+@Html.Partial("_AboutInfo")
+<hr />
+<h3>Comments</h3>
+<div id="comments-view-container">
+@Html.Partial("_MessagesView")
+</div>
+@if(User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_PostMessageForm", new MessageCreateModel())
+    @section Scripts { 
+    <script>javascriptValidator.validateForm('post-message-form')</script>
+    }
+}

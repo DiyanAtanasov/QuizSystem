@@ -1,0 +1,37 @@
+@model QuizSystem.Web.Models.RegisterViewModel
+
+<div class="form-container">
+    <h2>Register</h2>
+    @Html.ValidationSummary()
+    <form id="register-form" method="post" action="/Account/Register">
+        <hr />
+        @Html.AntiForgeryToken()
+        <div class="form-tab">
+            <label for="UserName">Username</label>
+            @Html.ValidationField(x => x.UserName, "input", new { type = "text" })
+        </div>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.Password)
+            @Html.ValidationField(x => x.Password, "input", new { type = "password" })
+        </div>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.ConfirmPassword)
+            @Html.ValidationField(x => x.ConfirmPassword, "input", new { type = "password" })
+        </div>
+        <div class="form-tab">
+            <label for="UserRole">Role</label>
+            @Html.ValidationField(x => x.UserRole, Html.BuildSelectMenu(
+            new List<SelectListItem> {
+                new SelectListItem { Text = "User", Value = "User", Selected = true},
+                new SelectListItem { Text = "MetaAdmin", Value = "MetaAdmin"},
+                new SelectListItem { Text = "Admin", Value = "Admin"}
+                }))
+        </div>
+        <hr />
+        <input type="submit" class="accept-btn" value="Register" />
+    </form>
+</div>
+
+@section Scripts {
+<script>javascriptValidator.validateForm('register-form');</script>
+}

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CategoryAdminModel>
+<h2>Categories Admin Panel</h2>
+<div id="main-category-panel">
+    <ul id="categories-list">
+        <li>@Html.Partial("_CreateCategory", new CategoryAdminModel())</li>
+        @foreach (var cat in Model)
+        {
+            <li>@Html.Partial("_EditCategory", cat)</li>
+        }
+    </ul>
+    <div class="main-category-action-box">
+    </div>
+</div>
+
+@section Scripts {
+<script src="~/Scripts/categories-crud-ajax.js"></script>
+<script>
+    categoriesCrudAjax.init('categories-list');
+</script>
+}

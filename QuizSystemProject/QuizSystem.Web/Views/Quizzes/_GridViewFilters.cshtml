@@ -1,0 +1,26 @@
+﻿@model SimpleDataPager<QuizViewModel>
+<form class="filters-form" id="filters-form" method="get" action="#">
+    <fieldset>
+        <legend>Filters</legend>
+        <div>
+            <label for="TitleContainsFilter">Title Filter :</label>
+            @Html.FilterField(x => x.Title, FilterAction.Contains, new HtmlElement("input").AddAttribute("type", "text"))
+        </div>
+        <div>
+            <label for="QuestionsGreaterFilter">Questions Filter : </label>
+            <span>Between</span>
+            @Html.FilterField(x => x.Questions, FilterAction.Greater, new HtmlElement("input", new { type = "text", @class = "small-input" }))
+            <span>And</span>
+            @Html.FilterField(x => x.Questions, FilterAction.Less, new HtmlElement("input", new { type = "text", @class = "small-input" }))
+        </div>
+        <div>
+            <label for="CategoryEqualFilter">Category Filter :</label>
+            @Html.FilterField(x => x.Category, FilterAction.Equal, Html.BuildSelectMenu(this.ViewData["categoriesFilter"] as IEnumerable<SelectListItem>))
+        </div>
+        <div>
+            <label for="CreatorContainsFilter">Creator Filter :</label>
+            @Html.FilterField(x => x.Creator, FilterAction.Contains, new HtmlElement("input").AddAttribute("type", "text"))
+        </div>
+        <input class="accept-btn" type="submit" value="Filter" />
+    </fieldset>
+</form>

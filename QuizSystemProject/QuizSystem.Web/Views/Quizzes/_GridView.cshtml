@@ -1,0 +1,66 @@
+﻿@model SimpleDataPager<QuizViewModel>
+<table class="grid-view">
+    <thead>
+        <tr>
+            <th class="size1">
+                @Html.SortLink(x => x.Category)
+            </th>
+            <th class="size3">
+                @Html.SortLink(x => x.Title)
+            </th>
+            <th class="size05">
+                @Html.SortLink(x => x.Questions, "Ques.")
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.Creator)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.PublishDate)
+            </th>
+            <th class="size05">
+                @Html.SortLink(x => x.Rating)
+            </th>
+            <th class="size2">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="7">
+                <div class="total-results">Total Results : @Model.TotalResults</div>
+                @Html.GetPageMenu()
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @if (Model.Items.Count() > 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Category</td>
+                    <td class="left">@item.Title</td>
+                    <td>@item.Questions</td>
+                    <td>@item.Creator</td>
+                    <td>
+                        @(item.PublishDate.ToString("yyyy/MM/dd"))
+                        <br />
+                        @(item.PublishDate.ToString("HH:mm:ss"))
+                    </td>
+                    <td><strong>@item.Rating</strong></td>
+                    <td>
+                        <a href="/Quizzes/Solve?quizId=@item.Id" class="button">Solve</a>
+                        <a href="/Quizzes/Details?quizId=@item.Id" class="button">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7"><hr />No Results Found<hr /></td>
+            </tr>
+        }
+    </tbody>
+</table>

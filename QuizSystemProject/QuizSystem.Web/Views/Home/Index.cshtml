@@ -1,0 +1,25 @@
+﻿@model HomeQuizzesViewModel
+<h1>Welcome to Quizzes</h1>
+
+@if(Model.NewestQuizzes.Count() > 0)
+{
+    <h2>Newest Quizzes</h2>
+    <hr />
+    @Html.Partial("_HomeQuizzes", Model.NewestQuizzes)
+    <h2>Top Rated Quizzes</h2>
+    <hr />
+    @Html.Partial("_HomeQuizzes", Model.MostRatedQuizzes)
+    <h2>Most Commented Quizzes</h2>
+    <hr />
+    @Html.Partial("_HomeQuizzes", Model.MostCommentedQuizzes)
+}
+else 
+{
+<div id="general-error-container">
+    <div class="error-image allSolved"></div>
+    <div class="error-message allSolved">
+        <h2>There are no new quizzes, for you to solve...</h2>
+        <h2>You can resolve old quizzes in your <a href="~/Quizzes/Archive">Archive</a> ...</h2>
+    </div>
+</div>
+}

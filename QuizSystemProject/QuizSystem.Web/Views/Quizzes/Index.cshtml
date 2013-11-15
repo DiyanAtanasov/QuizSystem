@@ -1,0 +1,14 @@
+﻿@model SimpleDataPager<QuizViewModel>
+<h2>Fresh Quizzes</h2>
+<hr />
+<div id="grid-container">
+    @Html.Partial("_GridView", Model)
+</div>
+<hr />
+<h3>Filters</h3>
+<hr />
+@Html.Partial("_GridViewFilters", Model)
+
+@section Scripts {
+@Scripts.Render("~/bundles/QuizIndex")
+}

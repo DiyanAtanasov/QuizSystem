@@ -1,0 +1,16 @@
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\QuizSystem.Data.dll.config
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\QuizSystem.Data.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\QuizSystem.Data.pdb
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\EntityFramework.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\EntityFramework.SqlServer.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\QuizSystem.Model.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\QuizSystem.Model.pdb
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\EntityFramework.xml
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\EntityFramework.SqlServer.xml
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\obj\Debug\QuizSystem.Data.csprojResolveAssemblyReference.cache
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\obj\Debug\QuizSystem.Data.dll
+F:\MVCProjects\QuizSystemProject\QuizSystem.Data\obj\Debug\QuizSystem.Data.pdb

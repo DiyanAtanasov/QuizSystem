@@ -1,0 +1,44 @@
+﻿@model QuizDetailsModel
+<h2>Details For <strong>"@Model.Title"</strong></h2>
+<hr />
+<div id="quiz-details-container">
+<div id="vote-panel">
+    <span>Rating</span>
+    <span id="votes-count">@(Model.Rating)</span>
+    @if(Model.UserCanVote)
+    {
+        <span id="vote-action">
+            <a href="?quizId=@(Model.Id)&value=1" id="vote-up" class="vote-btn"></a>
+            <a href="?quizId=@(Model.Id)&value=-1" id="vote-down" class="vote-btn"></a>
+        </span>
+    }
+</div>
+<div id="quiz-summary">
+    <span>Category : <strong>@Model.Category</strong></span>
+    <span>Creator : <strong>@Model.Creator</strong></span>
+    <span>Published On : <strong>@Model.PublishDate.ToString("yyyy-MMM-dd")</strong></span>
+    <span>Average Score : <strong>@(Model.AverageScore != null ? Model.AverageScore.ToString() + " %" : "N/A") </strong></span>
+    <span>Solved : <strong>@Model.SolvedCount</strong> time(s)</span>
+</div>
+</div>
+<hr />
+<h3>Comments </h3>
+<div id="comments-view-container">
+    @Html.Partial("_CommentsView", Model.Comments)
+</div>
+<hr />
+@if (Model.UserCanComment)
+{
+    @Html.Partial("_PostCommentForm", new CommentCreateModel { QuizId = Model.Id })
+}
+else
+{
+    <h2 class="message-heading">You need to <a href="~/Quizzes/Solve?quizId=@Model.Id">Solve</a> this quiz in order to comment or vote on it.</h2>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/QuizDetails")
+    @if (Model.UserCanVote)
+    {
+        @Scripts.Render("~/bundles/VoteAction");
+    }
+}

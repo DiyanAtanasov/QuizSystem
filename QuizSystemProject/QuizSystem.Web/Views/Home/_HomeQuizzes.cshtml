@@ -1,0 +1,25 @@
+﻿@model IEnumerable<QuizHomeViewModel>
+
+<ul class="home-quiz-view">
+    @foreach (var quiz in Model)
+    {
+        <li>
+            @if (quiz.Title.Length > 20)
+            {
+                <h4>@quiz.Title.Substring(0, 20)...</h4>
+            }
+            else 
+            {
+                <h4>@quiz.Title</h4>
+            }
+            <p>Category : <strong>@quiz.Category</strong></p>
+            <p>Questions : <strong>@quiz.Questions</strong></p>
+            <p>Rating : <strong>@quiz.Rating</strong></p>
+            <p>Comments : <strong>@quiz.Comments</strong></p>
+            <div>
+                <a class="button" href="/Quizzes/Solve?quizId=@quiz.Id">Solve</a>
+                <a class="button" href="/Quizzes/Details?quizId=@quiz.Id">Details</a>
+            </div>
+        </li>
+    }
+</ul>

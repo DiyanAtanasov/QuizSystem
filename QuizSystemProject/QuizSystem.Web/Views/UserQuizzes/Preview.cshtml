@@ -1,0 +1,42 @@
+﻿@model QuizPreviewModel
+<h2>Preview For <strong>"@Model.Title"</strong></h2>
+<hr />
+<a class="link" href="/UserQuizzes/Edit?quizId=@Model.Id">Go to Edit page</a>
+@if (User.IsInRole("Admin")) 
+{
+    @Html.Partial("_AvailableAdminActions", Model)
+}
+else if(Model.Questions.Count >= 5)
+{ 
+  @Html.Partial("_AvailableUserActions", new QuizUpdateModel { State = Model.State, Id = Model.Id })                                                                                   
+}
+<hr />
+<div id="quiz-preview-container">
+    @if(Model.Questions.Count > 0)
+    {
+        for (int i = 0; i < Model.Questions.Count; i++)
+        {
+            <div>
+                <h4>@(i + 1)</h4>
+                <p>@Model.Questions[i].Content</p>
+                <ul>
+                    @foreach (var answer in Model.Questions[i].Answers)
+                    {
+                        if (answer.Id == Model.Questions[i].RightAnswerId)
+                        {
+                            <li class="right"><span>@answer.Content</span></li>
+                        }
+                        else
+                        {
+                            <li><span>@answer.Content</span></li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+    }
+    else 
+    { 
+        <h2>No Questions</h2>
+    }
+</div>

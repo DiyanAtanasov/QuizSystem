@@ -1,0 +1,28 @@
+@model QuizSystem.Web.Models.LoginViewModel
+
+<div class="form-container">
+    <h2>Login</h2>
+    @Html.ValidationSummary()
+    <form id="login-form" method="post" action="/Account/Login">
+        <hr />
+        @Html.AntiForgeryToken()
+        <div class="form-tab">
+            <label for="UserName">Username</label>
+            @Html.ValidationField(x => x.UserName, "input", new { type = "text" })
+        </div>
+        <div class="form-tab">
+            @Html.LabelFor(x => x.Password)
+            @Html.ValidationField(x => x.Password, "input", new { type = "password" })
+        </div>
+        <div>
+            @Html.LabelFor(x => x.RememberMe)
+            @Html.CheckBoxFor(x => x.RememberMe)
+        </div>
+        <hr />
+        <input type="submit" class="accept-btn" value="Login" />
+    </form>
+</div>
+
+@section Scripts {
+<script>javascriptValidator.validateForm('login-form');</script>
+}

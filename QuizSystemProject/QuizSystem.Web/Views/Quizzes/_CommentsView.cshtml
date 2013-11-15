@@ -1,0 +1,17 @@
+﻿@model SimpleDataPager<CommentViewModel>
+<ul>
+    @foreach (var comment in Model.Items)
+    {
+        <li>
+            <div class="clearfix">
+                <span>by <em>@comment.User</em></span>
+                <p>@(comment.PublishDate.ToString("yyyy-MMM-dd in HH:mm:ss"))</p>
+            </div>
+            <p>@comment.Content</p>
+        </li>
+    }
+</ul>
+@if (Model.Items.Any())
+{
+    <div class="paging-box">@Html.GetPageMenu()</div>
+}

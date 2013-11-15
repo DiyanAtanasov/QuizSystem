@@ -1,0 +1,26 @@
+﻿@model QuizPreviewModel
+@if (Model.State == QuizSystem.Model.QuizState.Pending)
+{
+    <div class="available-actions-panel clearfix">
+        <form method="post" action="/Administration/Quizzes/Activate">
+            @Html.AntiForgeryToken()
+            <input type="hidden" value="@Model.Id" name="quizId" />
+            <input type="submit" class="bl-btn" value="Approve" />
+        </form>
+        <form method="post" action="/Administration/Quizzes/Reject">
+            @Html.AntiForgeryToken()
+            <input type="hidden" value="@Model.Id" name="quizId" />
+            <input type="submit" value="Reject" />
+        </form>
+    </div>
+}
+else if (Model.State == QuizSystem.Model.QuizState.Active)
+{
+    <div class="available-actions-panel clearfix">
+        <form method="post" action="/Administration/Quizzes/Reject">
+            @Html.AntiForgeryToken()
+            <input type="hidden" value="@Model.Id" name="quizId" />
+            <input type="submit" value="Reject" />
+        </form>
+    </div>
+}

@@ -1,0 +1,11 @@
+﻿@model SimpleDataPager<QuizArchiveModel>
+<h2>My Solved Quizzes</h2>
+<hr />
+<div id="grid-container">
+    @Html.Partial("_ArchiveGridView", Model)
+</div>
+<hr />
+<h3>Filters</h3>
+<hr />
+@Html.Partial("_ArchiveGridViewFilters", Model)
+

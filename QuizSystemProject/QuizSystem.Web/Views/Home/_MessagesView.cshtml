@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MessageViewModel>
+<ul>
+    @foreach (var message in Model)
+    {
+        <li>
+            <div class="clearfix">
+                <span>by <em>@message.User</em></span>
+                <p>@(message.PublishDate.ToString("yyyy-MMM-dd in HH:mm:ss"))</p>
+            </div>
+            <p>@message.Content</p>
+        </li>
+    }
+</ul>

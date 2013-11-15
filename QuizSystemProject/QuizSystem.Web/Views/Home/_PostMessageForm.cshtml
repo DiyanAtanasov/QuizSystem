@@ -1,0 +1,9 @@
+﻿@model MessageCreateModel
+<form id="post-message-form" action="/Home/About" method="post">
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    <div class="form-tab">
+        @Html.ValidationField(x => x.Content, new HtmlElement("textarea"))
+    </div>
+    <input type="submit" value="Leave Comment" class="bl-btn" />
+</form>

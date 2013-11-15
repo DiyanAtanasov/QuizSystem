@@ -1,0 +1,78 @@
+﻿@model SimpleDataPager<QuizAuthorViewModel>
+<table class="grid-view">
+    <thead>
+        <tr>
+            <th class="size1">
+                @Html.SortLink(x => x.Category)
+            </th>
+            <th class="size4">
+                @Html.SortLink(x => x.Title)
+            </th>
+            <th class="size05">
+                @Html.SortLink(x => x.Questions, "Ques.")
+            </th>
+            <th class="size05">
+                @Html.SortLink(x => x.SolvedCount, "Solv.")
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.AverageScore, "AvgScore")
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.State)
+            </th>
+            <th class="size2">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="7"> 
+                <div class="total-results">Total Results : @Model.TotalResults</div>
+                @Html.GetPageMenu()
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @if (Model.Items.Count() > 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Category</td>
+                    <td class="left">@item.Title</td>
+                    <td>@item.Questions</td>
+                    <td>@item.SolvedCount<br />time(s)</td>
+                    <td>
+                        @if(item.AverageScore != null)
+                        {
+                            @(item.AverageScore +  " %")
+                        }
+                        else 
+                        {
+                            @("N/A")
+                        }
+                    </td>
+                    <td>@item.State</td>
+                    <td>
+                        @if(item.State == QuizSystem.Model.QuizState.Active)
+                        {
+                            <a href="/Quizzes/Details?quizId=@item.Id" class="button">Details</a>
+                        }
+                        else
+                        {
+                            <a href="/UserQuizzes/Edit?quizId=@item.Id" class="button">Edit</a>
+                        }
+                        <a href="/UserQuizzes/Preview?quizId=@item.Id" class="button">Preview</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7"><hr />No Results Found<hr /></td>
+            </tr>
+        }
+    </tbody>
+</table>

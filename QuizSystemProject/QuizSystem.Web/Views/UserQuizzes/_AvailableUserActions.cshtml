@@ -1,0 +1,42 @@
+﻿@model QuizUpdateModel
+<div class="available-actions-panel clearfix">
+    @if (Model.State == QuizSystem.Model.QuizState.Development ||
+        Model.State == QuizSystem.Model.QuizState.Rejected)
+    {
+        <form id="publish-form" method="post" action="/UserQuizzes/Publish">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+            <input type="hidden" value="@Model.Id" name="quizId" />
+            <input type="submit" class="bl-btn" value="Publish" />
+        </form>
+        <div>
+            <p>To publish a quiz, it must have atleast <strong>5 questions</strong>.</p>
+            <p>In order to publish your quiz, you need to send it for approval by administrator.</p>
+            <p>In case of <strong>approval</strong> your quiz will be <strong>published</strong>.</p>
+            <p>You wont be able to <strong>edit your quiz</strong>, during <strong>approval</strong> process.</p>
+            <p style="color:red">Currently admin approval procces is <strong>disabled</strong>. </p>
+            <p style="color:red">You can directly publish your quiz. Remember that after publishing your quiz is locked for any editing.</p>
+        </div>
+    }
+    else if (Model.State == QuizSystem.Model.QuizState.Pending)
+    {
+        <form method="post" action="/UserQuizzes/Withdraw">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+            <input type="hidden" value="@Model.Id" name="quizId" />
+            <input type="submit" value="Withdraw" />
+        </form>
+        <div>
+            <p>This quiz is waiting for administrator <strong>approval</strong>.</p>
+            <p>All edit operations are <strong>locked</strong>.</p>
+            <p>Withdrawing this quiz will allow editing.</p>
+        </div>
+    }
+    else
+    {
+        <div>
+            <p>This quiz is <strong>published</strong>.</p>
+            <p>All edit operations are <strong>locked</strong>.</p>
+        </div>
+    }
+</div>

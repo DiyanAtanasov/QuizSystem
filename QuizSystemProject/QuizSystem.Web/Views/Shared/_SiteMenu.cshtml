@@ -1,0 +1,22 @@
+﻿<ul class="site-menu menu-list">
+    <li><a href="~/Home/Index">Home</a></li>
+    <li>
+        <span>Solve Quizz</span>
+        <ul>
+            <li><a href="~/Quizzes/Index">Fresh Quizzes</a></li>
+            <li><a href="~/Quizzes/Archive">Archive</a></li>
+        </ul>
+    </li>
+    <li><a href="~/UserQuizzes/Index">My Quizzes</a></li>
+    <li><a href="~/Home/About">About</a></li>
+    @if(this.User.IsInRole("Admin"))
+    {
+        <li>
+            <span>Administration</span>
+            <ul>
+                <li><a href="~/Administration/Categories">Categories</a></li>
+                <li><a href="~/Administration/Quizzes">Quizzes</a></li>
+            </ul>
+        </li>
+    }
+</ul>

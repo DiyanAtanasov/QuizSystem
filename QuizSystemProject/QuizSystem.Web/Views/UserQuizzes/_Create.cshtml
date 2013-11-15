@@ -1,0 +1,16 @@
+﻿@model QuizCreateModel
+<div id="quiz-create-form-container">
+    <span id="quiz-create-trigger">New Quiz</span>
+    <form id="quiz-create-form" method="post" action="~/Quizzes/Create">
+        @Html.AntiForgeryToken()
+            <div class="form-tab">
+                <label for="CategoryId">Category</label>
+                @Html.ValidationField(x => x.CategoryId, Html.BuildSelectMenu(ViewData["categories"] as IEnumerable<SelectListItem>))
+            </div>
+            <div class="form-tab">
+                <label for="Title">Title</label>
+                @Html.ValidationField(x => x.Title, "input", new { type = "text" })
+            </div>
+        <input type="submit" class="bl-btn" value="Create" />
+    </form>
+</div>

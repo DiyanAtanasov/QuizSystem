@@ -1,0 +1,9 @@
+﻿@model CommentCreateModel
+<form id="post-comment-form" action="/Quizzes/Comment" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="QuizId" value="@Model.QuizId" />
+    <div class="form-tab">
+        @Html.ValidationField(x => x.Content, new HtmlElement("textarea"))
+    </div>
+    <input type="submit" value="Leave Comment" class="bl-btn" />
+</form>

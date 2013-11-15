@@ -1,0 +1,40 @@
+﻿@model QuizUpdateModel
+<h2>Editing Quiz <strong id="quiz-title">"@Model.Title"</strong></h2>
+<hr />
+<a class="link" href="/UserQuizzes/Preview?quizId=@Model.Id">Go to Preview page</a>
+@Html.Partial("_AvailableUserActions", Model)
+<hr />
+@Html.Partial("_Update", Model)
+<hr />
+<div class="state-info">
+        <h3>State <strong>@Model.State</strong></h3>
+</div>
+<hr />
+<h3>Questions List</h3>
+<div id="questions-container"></div>
+
+@section Scripts {
+@Scripts.Render("~/bundles/AuthorEdit")
+<script>
+(function () {
+    var manager = new QuestionsManager(@Model.Id);
+    var container = document.getElementById('questions-container');
+    container.appendChild(manager.actionPanel);
+    container.appendChild(manager.container);
+    manager.render();
+
+    var publishForm = document.getElementById('publish-form');
+    if (publishForm) {
+        eventUtils.setEvent(publishForm, 'submit', function (evt) {
+            if (manager.data.length < 5) {
+                htmlUtils.overlayMessage({
+                    level: 4, isError: true, message:
+                        'Quiz must have atleast 5 questions before publishing.'
+                });
+                eventUtils.preventDefault(evt);
+            }
+        });
+    }
+}());
+</script>
+}

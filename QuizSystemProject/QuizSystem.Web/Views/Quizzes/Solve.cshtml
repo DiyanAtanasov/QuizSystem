@@ -1,0 +1,30 @@
+﻿@model QuizSolveModel
+<h2>Solving <strong>"@Model.Title"</strong></h2>
+<hr />
+<div id="quiz-solve-container">
+    <form id="quiz-solve-form" method="post" action="/Quizzes/Solve">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="quizId" value="@Model.Id" />
+        @for (int i = 0; i < Model.Questions.Count; i++)
+        {
+            <div>
+                <h4>@(i + 1)</h4>
+                <p>@Model.Questions[i].Content</p>
+                <ul>
+                    @foreach (var answer in Model.Questions[i].Answers)
+                        {
+                        <li>
+                            <input type="radio" name="q-@Model.Questions[i].Id" value="@answer.Id" />
+                            <span>@answer.Content</span>
+                        </li>
+                        }
+                </ul>
+            </div>
+        }
+        <hr />
+        <input type="submit" class="accept-btn" value="Submit" />
+    </form>
+</div>
+@section Scripts {
+@Scripts.Render("~/bundles/QuizSolve")
+}

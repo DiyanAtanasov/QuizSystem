@@ -1,0 +1,66 @@
+﻿@model SimpleDataPager<QuizArchiveModel>
+<table class="grid-view">
+    <thead>
+        <tr>
+            <th class="size1">
+                @Html.SortLink(x => x.Category)
+            </th>
+            <th class="size3">
+                @Html.SortLink(x => x.Title)
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.FirstResult, "First Result")
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.LastResult, "Last")
+            </th>
+            <th class="size1">
+                @Html.SortLink(x => x.Creator)
+            </th>
+            <th class="size05">
+                @Html.SortLink(x => x.Rating)
+            </th>
+            <th class="size05">
+                @Html.SortLink(x => x.Comments, "Com.")
+            </th>
+            <th class="size2">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="8">
+                <div class="total-results">Total Results : @Model.TotalResults</div>
+                @Html.GetPageMenu()
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @if (Model.Items.Count() > 0)
+        {
+            foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Category</td>
+                    <td class="left">@item.Title</td>
+                    <td>@item.FirstResult %</td>
+                    <td>@item.LastResult %</td>
+                    <td>@item.Creator</td>
+                    <td><strong>@item.Rating</strong></td>
+                    <td>@item.Comments</td>
+                    <td>
+                        <a href="/Quizzes/Solve?quizId=@item.Id" class="button">Solve Again</a>
+                        <a href="/Quizzes/Details?quizId=@item.Id" class="button">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8"><hr />No Results Found<hr /></td>
+            </tr>
+        }
+    </tbody>
+</table>

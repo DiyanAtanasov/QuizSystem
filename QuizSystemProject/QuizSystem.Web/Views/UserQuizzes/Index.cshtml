@@ -1,0 +1,11 @@
+﻿@model SimpleDataPager<QuizAuthorViewModel>
+<h2>My Quizzes</h2>
+<hr />
+@Html.Partial("_Create", new QuizCreateModel { })
+@Html.Partial("_GridViewFilters", Model)
+<div id="grid-container">
+    @Html.Partial("_GridView", Model)
+</div>
+@section Scripts {
+@Scripts.Render("~/bundles/AuthorIndex")
+}

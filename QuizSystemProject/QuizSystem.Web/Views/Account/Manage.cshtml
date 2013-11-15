@@ -1,0 +1,12 @@
+@using QuizSystem.Web.Models;
+@using Microsoft.AspNet.Identity;
+
+<div class="multiple-forms">
+    <h2>Account Managment</h2>
+    <p>You are logged as <strong>@User.Identity.Name</strong>.</p>
+    <hr />
+    @Html.Partial("_ChangePasswordPartial")
+</div>
+@section Scripts {
+<script>javascriptValidator.validateForm('change-password-form');</script>
+}
