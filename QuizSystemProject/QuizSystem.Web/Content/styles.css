@@ -563,9 +563,8 @@ a.disabled {
     width: 98%; }
 
 .error-msg {
-  background-color: #bd0000;
   padding-left: 50px;
-  background: url("/img/caution.png") 10px 50% no-repeat; }
+  background: #bd0000 url("/img/caution.png") 10px 50% no-repeat; }
 
 .success-msg {
   background-color: #2877FF; }
