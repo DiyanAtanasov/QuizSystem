@@ -92,14 +92,7 @@ namespace QuizSystem.Web.Controllers
                 var result = await IdentityManager.Users.CreateLocalUserAsync(user, model.Password);
                 if (result.Success)
                 {
-                    if (model.UserRole == "Admin")
-                    {
-                        await RegisterUserRole(user, model.UserRole.ToString());
-                    }
-                    else
-                    {
-                        await RegisterUserRole(user, "User");
-                    }
+                    await RegisterUserRole(user, "User");
 
                     await IdentityManager.Authentication.SignInAsync(AuthenticationManager, user.Id, isPersistent: false);
                     return RedirectToAction("Index", "Home");

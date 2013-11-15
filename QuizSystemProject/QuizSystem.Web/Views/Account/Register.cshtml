@@ -18,15 +18,6 @@
             @Html.LabelFor(x => x.ConfirmPassword)
             @Html.ValidationField(x => x.ConfirmPassword, "input", new { type = "password" })
         </div>
-        <div class="form-tab">
-            <label for="UserRole">Role</label>
-            @Html.ValidationField(x => x.UserRole, Html.BuildSelectMenu(
-            new List<SelectListItem> {
-                new SelectListItem { Text = "User", Value = "User", Selected = true},
-                new SelectListItem { Text = "MetaAdmin", Value = "MetaAdmin"},
-                new SelectListItem { Text = "Admin", Value = "Admin"}
-                }))
-        </div>
         <hr />
         <input type="submit" class="accept-btn" value="Register" />
     </form>
