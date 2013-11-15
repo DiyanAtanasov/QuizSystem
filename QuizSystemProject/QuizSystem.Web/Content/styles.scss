@@ -1042,15 +1042,26 @@ tfoot, .paging-box {
 /*Quizz Preview, View*/
 #quiz-preview-container, #quiz-solve-form { 
 	padding-bottom:50px;
-	& > input[type=submit] { margin-left:45%; padding:10px 20px; font-size:1.3em }
+
+	& > input[type=submit] { 
+		margin-left:45%; 
+		padding:10px 20px; 
+		font-size:1.3em 
+	}
+
 	& > div.unanswered {
 		  background-color:#FF4949; 
 		}
+
+	& > div.answered {
+		background-color:#87FF47; 
+	}
+
 	& > div { 
 		border-radius:10px;
 		padding:10px;
 		margin-bottom:20px;
-		background-color:#D5FF9B;
+		background-color:#EDFF66;
 		
 			h4 { 
 				text-align:center;

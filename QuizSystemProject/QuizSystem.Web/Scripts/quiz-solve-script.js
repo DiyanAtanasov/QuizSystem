@@ -36,10 +36,11 @@
         }
 
         if (!allAnswered) {
-            htmlUtils.overlayMessage({ isError: true, message: 'There is still unanswered questions.' });
+            htmlUtils.overlayMessage({ isError: true, message: 'There are still unanswered questions.' });
             eventUtils.preventDefault(evt);
         }
     });
+
     eventUtils.setEvent(form, 'click', function (evt) {
         var el = evt.target;
 
@@ -55,12 +56,13 @@
             }
 
             var oldSelect = htmlUtils.findChild(el.parentElement, { className: 'selected' });
-            if (oldSelect) { oldSelect.className = '' }
+            if (oldSelect) {
+                oldSelect.className = ''
+            } else {
+                el.parentElement.parentElement.className = 'answered';
+            }
 
             el.className = 'selected';
-            if (el.parentElement.parentElement.className) {
-                el.parentElement.parentElement.className = ' ';
-            }
 
             el = el.firstChild;
             while (el && el.type != 'radio') {

@@ -833,11 +833,13 @@ tfoot, .paging-box {
     font-size: 1.3em; }
   #quiz-preview-container > div.unanswered, #quiz-solve-form > div.unanswered {
     background-color: #FF4949; }
+  #quiz-preview-container > div.answered, #quiz-solve-form > div.answered {
+    background-color: #87FF47; }
   #quiz-preview-container > div, #quiz-solve-form > div {
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
-    background-color: #D5FF9B; }
+    background-color: #EDFF66; }
     #quiz-preview-container > div h4, #quiz-solve-form > div h4 {
       text-align: center;
       display: inline-block;
