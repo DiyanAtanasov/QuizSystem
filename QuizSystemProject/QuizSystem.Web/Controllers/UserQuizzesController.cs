@@ -162,7 +162,7 @@ namespace QuizSystem.Web.Controllers
             if ((quiz.State != QuizState.Development && quiz.State != QuizState.Rejected)
                    && !this.User.IsInRole("Admin"))
             {
-                throw new HttpException(400, "Your quiz is currently locked for any editing.");
+                throw new  InvalidOperationException("Your quiz is currently locked for any editing.");
             }
 
             this.context.Quizzes.RemoveItem(quiz);
