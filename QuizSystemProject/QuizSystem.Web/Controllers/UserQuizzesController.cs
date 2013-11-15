@@ -149,7 +149,6 @@ namespace QuizSystem.Web.Controllers
         }
 
         [HttpPost]
-        [HandleAjaxError]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int quizId)
         {
