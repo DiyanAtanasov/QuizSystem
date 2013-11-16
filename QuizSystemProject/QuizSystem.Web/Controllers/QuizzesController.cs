@@ -118,7 +118,7 @@ namespace QuizSystem.Web.Controllers
             string userId = this.User.Identity.GetUserId();
             Quiz quiz = this.context.Quizzes.GetById(quizId);
 
-            if (userId == null || quiz.State == QuizState.Active)
+            if (userId == null || quiz.State != QuizState.Active)
             {
                 throw new HttpException(400, "You are not authorized.");
             }
