@@ -1,19 +1,26 @@
 ﻿@model HomeQuizzesViewModel
 <h1>Welcome to Quiz System</h1>
 
-@if(Model.NewestQuizzes.Count() > 0)
+@if (Model.NewestQuizzes.Count() > 0)
 {
-    <h2>Newest Quizzes</h2>
-    <hr />
-    @Html.Partial("_HomeQuizzes", Model.NewestQuizzes)
-    <h2>Top Rated Quizzes</h2>
-    <hr />
-    @Html.Partial("_HomeQuizzes", Model.MostRatedQuizzes)
-    <h2>Most Commented Quizzes</h2>
-    <hr />
-    @Html.Partial("_HomeQuizzes", Model.MostCommentedQuizzes)
+    <div id="home-newest-quizzes">
+        <h2>Newest Quizzes</h2>
+        @Html.Partial("_HomeQuizzes", Model.NewestQuizzes)
+    </div>
+    <div id="home-topquestions-quizzes">
+        <h2>Most Questions Quizzes</h2>
+        @Html.Partial("_HomeQuizzes", Model.MostQuestionsQuizzes)
+    </div>
+    <div id="home-toprated-quizzes">
+        <h2>Top Rated Quizzes</h2>
+        @Html.Partial("_HomeQuizzes", Model.MostRatedQuizzes)
+    </div>
+    <div id="home-topcommented-quizzes">
+        <h2>Most Commented Quizzes</h2>
+        @Html.Partial("_HomeQuizzes", Model.MostCommentedQuizzes)
+    </div>
 }
-else 
+else
 {
 <div id="general-error-container">
     <div class="error-image allSolved"></div>

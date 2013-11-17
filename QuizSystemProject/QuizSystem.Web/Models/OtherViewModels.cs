@@ -11,6 +11,7 @@ namespace QuizSystem.Web.Models
         public IEnumerable<QuizHomeViewModel> NewestQuizzes { get; set; }
         public IEnumerable<QuizHomeViewModel> MostRatedQuizzes { get; set; }
         public IEnumerable<QuizHomeViewModel> MostCommentedQuizzes { get; set; }
+        public IEnumerable<QuizHomeViewModel> MostQuestionsQuizzes { get; set; }
     }
 
     public class MessageViewModel

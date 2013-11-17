@@ -38,6 +38,10 @@ namespace QuizSystem.Web.Controllers
                            .Take(6)
                            .Select(ModelConvertor.QuizToHomeViewModel);
 
+            model.MostQuestionsQuizzes = query.OrderByDescending(x => x.Questions.Count)
+                           .Take(6)
+                           .Select(ModelConvertor.QuizToHomeViewModel);
+
             return View(model);
         }
 

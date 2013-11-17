@@ -1061,7 +1061,7 @@ tfoot, .paging-box {
 		border-radius:10px;
 		padding:10px;
 		margin-bottom:20px;
-		background-color:#EDFF66;
+		background-color:#ADFFB9;
 		
 			h4 { 
 				text-align:center;
@@ -1074,6 +1074,7 @@ tfoot, .paging-box {
 			}
 
 			p { 
+				color:#303030;
 					font-size:1.2em;
 					text-align:justify;
 					width:88%;
@@ -1090,7 +1091,6 @@ tfoot, .paging-box {
 			width:60%;
 			li span{ 
 				display:block;
-				cursor:pointer;
 				border-radius:10px;
 				word-wrap:break-word;
 				padding:10px 1%;
@@ -1105,7 +1105,7 @@ tfoot, .paging-box {
 			}
 
 			li.wrong span{
-				background-color:#FF4949;
+				background-color:red;
 			}
 
 			li.right span{
@@ -1128,6 +1128,8 @@ tfoot, .paging-box {
 		 cursor:pointer;
 		}
 }
+
+//#quiz-preview-container.solved #quiz-solve-form ul > li{ cursor:default }
 
 /*Quiz Solved*/
 #score-panel{ 
@@ -1202,13 +1204,63 @@ padding-left:10%;
 		}
 		p strong { 
 			font-size:1.2em;
-			color:teal;
 		}
 		@include ib;
 		vertical-align:middle;
 		width:33%;
 	}
 }
+
+#home-newest-quizzes{ 
+		h2 {
+			color:white;
+			margin-bottom:20px;
+			background-color:teal;
+			border-radius:10px;
+		}
+
+		p strong { color:teal; }
+}
+
+#home-toprated-quizzes{ 
+		h2 {
+			color:white;
+			background-color:#00AE1D;
+			border-radius:10px;
+			margin-bottom:20px;
+		}
+
+		p strong { color:#00AE1D; }
+
+		a.button { background-color:#00AE1D; }
+}
+
+#home-topquestions-quizzes{ 
+		h2 {
+			color:white;
+			background-color:#A30846;
+			border-radius:10px;
+			margin-bottom:20px;
+		}
+
+		p strong { color:#A30846; }
+
+		a.button { background-color:#A30846; }
+}
+
+#home-topcommented-quizzes{ 
+		h2 {
+			color:white;
+			background-color:#4683ea;
+			border-radius:10px;
+			margin-bottom:20px;
+		}
+
+		p strong { color:#4683ea; }
+
+		a.button { background-color:#4683ea; }
+}
+
 
 /*Error and message pages*/
 #general-error-container{ 
@@ -1329,3 +1381,27 @@ font-size:0.9em;
 	}
 }
 
+#about-info-container {
+padding:0 10%;
+font-family:Verdana;
+    p { 
+	white-space:normal;
+	text-align:justify;
+	margin:10px;
+	line-height:150%;
+
+	em{ 
+		font-weight:400;
+	}
+
+	}
+
+	a {
+		color:#4683ea;
+		text-decoration:none;
+	}
+
+	a:hover{ 
+		text-decoration:underline;
+	}
+}
