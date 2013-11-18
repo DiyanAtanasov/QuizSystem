@@ -3,30 +3,173 @@
         Hello,<br /><br />  My name is Diyan Atanasov. I am 26 years old and I am currently living in Sofia, Bulgaria.
         I am a graduate of Thracian University, Bulgaria. I graduated as a veterinarian.
         Due to various reasons I had made the decision to join <a href="http://academy.telerik.com/">Telerik Software Academy</a>
-        in October 2012 and to start a career as a Software Developer. After a year of very intensive education I have successfully
+        in October 2012 and to start a career as a Software Developer. After a year of very intensive studies I have successfully
         graduated and earned <a href="https://telerikacademy.com/Certificates/View/339/ad199c2c">certificate</a> of graduation.
     </p>
 
     <p>
-        In the Academy I have acquired theoretical knowledge - <strong>OOP</strong>, <strong>Data Structures</strong>, <strong>Algorithms</strong>, <strong>Quality Code</strong>,<strong>Unit Testing</strong>, <strong>Design Patterns</strong>, <strong>Databases</strong> and
-        practical skills – <strong>C#</strong>, <strong>ASP.NET</strong> [ <em>MVC, Web Forms, Web Api</em> ], <strong>JavaScript</strong> [ <em>native, JQuery, JUnit, Kendo UI, AngularJS, RequireJS</em> ], <strong>Relational Databases</strong> [ <em>MS SQL Server</em>, <em>MySQL</em> ].
+        In the Academy I have acquired theoretical and practical knowledge - <strong>OOP</strong>, <strong>Data Structures</strong>, <strong>Algorithms</strong>, <strong>Quality Code</strong>,<strong>Unit Testing</strong>, <strong>Design Patterns</strong>, <strong>Databases</strong> and
+        learned different technologies – <strong>C#</strong>, <strong>ASP.NET</strong> [ <em>MVC, Web Forms, Web Api</em> ], <strong>JavaScript</strong> [ <em>native, JQuery, JUnit, Kendo UI, AngularJS, RequireJS</em> ], <strong>Relational Databases</strong> [ <em>MS SQL Server</em>, <em>MySQL</em> ].
     </p>
 
     <p>
         I have created this Web Application in order to demonstrate some of the things I learned in Telerik Academy.
     </p>
-
+    <br />
+    <hr />
+    <br />
+    <h3>Development Summary</h3>
     <p>
         The Site is created via <strong>ASP.NET MVC</strong> and native <strong>JavaScript</strong>.<br />
         The Performance is tested on Chrome, Firefox, Opera, IE 10 to 7 [ <em>on IE7 they are still some styling issues</em> ].
         In order to show my understanding of the matter I have minimized the usage of external libraries.
-        The Site is hosted on <a href="https://appharbor.com">AppHarbor</a>.
+        The Site is hosted on <a href="https://appharbor.com">AppHarbor</a> using the basic hosting plan.
         I am using <strong>MS SQL Server</strong> with code first <em>Entity Framework</em> approach and extended <em>Microsoft Identity System</em>.
         On client side, I have decided not to use JQuery, so everything is made via native JavaScript.<br />
         I hope you enjoy it!
     </p>
-
     <p>
         <strong>Here is the <a href="https://github.com/DiyanAtanasov/QuizSystem">Source Code</a></strong>.
     </p>
+    <br />
+    <hr />
+    <br />
+    <h3>Detailed Development Notes</h3>
+    <p>
+        Quiz system is an simple internet application which provides the opportunity to test your knowledge in different areas.
+        Official score for given quiz is First Time score. Solving quizzes from archive does not change first time score.
+    </p>
+    <h4>Functionality</h4>
+    <p>
+        Registered users can solve all available quizzes or create quizzes of their own. Administrators control the quiz flow.
+        A quiz can maintain different states – <strong>Development</strong>, <strong>Pending</strong>, <strong>Active</strong>, <strong>Rejected</strong>.
+    <p>
+        If user choose to create quiz, on creating it is set in <strong>Development State</strong>. In this state the author can edit the content of
+        quiz – title, category, add/remove/edit questions, add/remove/edit answers. When quiz is in Development state, it is
+        visible only by its author or administrator. After quiz is ready to be published, the author can send his quiz for approval,
+        which will set the quiz in <em>Pending State</em>.
+    </p>
+    <p>
+        Quiz in <strong>Pending State</strong>, is locked for any edit operations by the author and waiting administrator approval or rejection.
+        The author is capable in any moment to <strong>withdraw</strong> his quiz back in <em>Development State</em>.<br />
+        After administrator evaluates quiz in <em>Pending State</em> – it is set in either <em>Active</em> or <em>Rejected State</em>.
+        <br /><span style="color:red">N.B. - Currently Pending State is turned Off to ease testing process</span>
+    </p>
+    <p>
+        <strong>Rejected State</strong> provides all of the functionality of <em>Development State</em> and indicates that this quiz has been rejected by administrator.
+    <p>
+    <p>
+        Quiz in <strong>Active state</strong> is visible and can be solved by all users. All edit operations are locked at this point.
+        All quizzes in active state are available for solving. Voting and commenting on quiz are locked until the particular user solves it.
+        Each user can vote on a quiz only one time. After quiz is solved by some user, it can be reSolved, voted, or commented  via the archive page.
+        Quizzes that are active and not yet solved by particular user can be found on Home page or Fresh Quizzes page.<br />
+        <em>Activated</em> quizzes can also be <em>rejected</em> by administrator at any point which will cause “restart” - all votes, scores and comments will be removed.
+    </p>
+    <p>
+        Based on <strong>States</strong> administrators can track dead quizzes and remove them. This is accomplished by saving each state change
+        as last modfication time for given quiz. For example if quiz is created and stay in development state for a month, it can be considered dead
+        and be removed.
+    </p>
+    <h4>Restrictions</h4>
+    <p><strong>Quizzes</strong> : 
+    <br />A quiz can have 5 - 100 questions in order to be published.</p>
+    <p><strong>Questions</strong> : 
+    <br /> Content can be maximum 300 characters. 
+    <br /> A Question can have 2 - 6 unique answers. 
+    <br /> Selecting right answer is mandatory.</p>
+    <p><strong>Answers</strong> : 
+    <br />Content can be maximum 100 characters.</p>
+    <h4>The Database</h4>
+    <p>
+        I am using <strong>MS SQL Server</strong> as Database Server. Connection between database and application server is done via Entity Framework.
+        I am using database first approach extending Microsoft Identity System /I am planning to develop my own Authentication System but for now
+        MS Identity is doing the job pretty well/. Entity Framework Models and Context Configuration are separated in different projects
+        as libraries. I am using code first automatic migration which allows changes to be made on database after creation.
+    </p>
+    <p>
+        Entity operations are organized in generic interface
+        <a href="https://github.com/DiyanAtanasov/QuizSystem/blob/master/QuizSystemProject/QuizSystem.Data/IRepository.cs">IRepository&lt;T&gt;</a>
+        which is then implemented by the work class
+        <a href="https://github.com/DiyanAtanasov/QuizSystem/blob/master/QuizSystemProject/QuizSystem.Data/QuizRepository.cs">QuizRepository&lt;T&gt;</a>.
+        <br />
+        Application uses <a href="https://github.com/DiyanAtanasov/QuizSystem/blob/master/QuizSystemProject/QuizSystem.Web/Context/IQuizUnitOfWork.cs">IUnitOfWork</a>
+        interface which is then implemented by work class
+        <a href="https://github.com/DiyanAtanasov/QuizSystem/blob/master/QuizSystemProject/QuizSystem.Web/Context/QuizUnitOfWork.cs">UnitOfWork</a>.
+        <br />
+        All of this is pretty cool because it allows me to create single DbContext, initialize UnitOfWork
+        with that context and execute all my database queries via single context. Also my UnitOfWork class uses lazy loading, meaning
+        that each repository is loaded only if it is needed. More on, I am doing UnitOfWork initialization in the BaseContoller class,
+        which all other controllers inherits, and that allows me easy change of the database layer using dependency injection or some other approach.
+        <br />
+    </p>
+    <p>
+        Another thing about database communication is that I am processing all collections as <em>IQueryable&lt;T&gt;</em>.
+        This approach is very good, but there is some problems with it when using Entity Framework. Normally to maintain 
+        <em>IQueryable</em> collection you need to use <strong>Expressions</strong> which are translatable by <strong>Linq-To-Entities</strong>. 
+        Of course you can just use Lambda functions and do whatever you want, but this would transform the <em>IQueryable</em> in IEnumerable 
+        and also in more complex queries would cause <strong>N + 1 query</strong> problem /although N + 1 query is easy to prevent 
+        using includes /. So with all of this mentioned I find it inconvenient to use includes for this project, so I transform 
+        all query logic in expressions /see. 
+        <a href="https://github.com/DiyanAtanasov/QuizSystem/blob/master/QuizSystemProject/QuizSystem.Web/Libs/DataPager/SimpleDataPager.cs">SimpleDataPager&lt;T&gt;</a> /. 
+        By doing so, I pretty much can do anything I want with the data without disturb the <em>IQueryable</em> chain.
+    </p>
+    <p>
+        Now for the database itself things are pretty normal. Since I am using code first approach basic database configuration 
+        is done via Fluent Api /I preferred it over the attribute approach/ and special configuration /i.e. indexes/ is done in 
+        Seed Method with raw SQL Queries. Another thing that is worth mentioning is Questions-Answers relation. Although there is a 
+        lot of ways to do that, I decided to go with Many-To-Many Relationship. Answers table contains only unique answers, so when 
+        an answer is entered and it already exists /I believe in project like this it will not be uncommon for answers to overlap/, 
+        old answer is used instead saving same entry twice. This approach complicates CRUD operations for questions, but I believe 
+        it is worth it.
+    </p>
+    <h4>Server Side</h4>
+    <p>
+        Server logic is pretty much standard <strong>MVC</strong>, although I am using some custom features and extensions.
+    </p>
+    <p>
+        I believe one of the things that is worth mentioning is 
+        <a href="https://github.com/DiyanAtanasov/QuizSystem/blob/master/QuizSystemProject/QuizSystem.Web/Libs/DataPager/SimpleDataPager.cs">SimpleDataPager&lt;T&gt;</a>. 
+        I am doing all my data filtering and paging using this class and some extensions to the HtmlHelper class. Combination of 
+        both allows me really flexible data manipulation. As a demonstration I am using this class as base for both standard and 
+        AJAX paging and filtering.
+    </p>
+    <p>
+        Data is passed from Controllers to Views by View Models. For this I have created a ModelConvertor class which transforms 
+        entity to view model. This allows me when I need a change in model to change just model itself and the conversion 
+        expression without go all around the code.
+    </p>
+    <p>
+        Another thing about server side is that, I have created client side validation based on DataAnnotation Attributes. 
+        To translate C# attributes I am using HtmlHelper extension method. Via JavaScript I have created a validation module, that 
+        will validate translated attributes on the client. Also it is really easy for me to add validation to fields via JavaScript 
+        and validate those fields using this module.
+    </p>
+    <h4>Client Side</h4>
+    <p>
+        Now JavaScript is interesting : ). Since browser support is a pain, I am using different approaches than usual. 
+        A lot of sophisticated stuff does not work in IE 7, so I needed to adapt. I have created different mini-libraries to do 
+        the job and work on major browsers /n.b. - <em>site is not tested on mobile browsers</em>/.<br />
+        Basically all my JavaScript is organized in modules / closures / or classes. String concatenation is done via array.join() 
+        approach. Actually I am using massive string concatenation only in my JSON object interpretation for IE 7. 
+        Also in IE 7 my JSON object is using eval to parse the data from server and that is the only place I am using it, and I 
+        believe it is the best approach for the situation, since the data is coming only from server and it is save to use. 
+        DOM manipulation is done via document.create() instead of innerHTML, except in some AJAX requests where html text is 
+        returned from server.
+    </p>
+    <p>
+        My original idea was to use just a little JavaScript, but in development process I found it more convenient and logical 
+        for some actions. For example at the quiz edit page, almost everything is done via JavaScript. I have decided to go like 
+        this, because I find it really pointless to save each change on each answer and send requests to server all the time. 
+        That’s why I implemented this part via module which is handling all changes on the client, and then after the whole 
+        question is ready, request is send to server and operations are saved in the database.
+    </p>
+    <p>
+        Another thing that is worth mentioning about the JavaScript is AJAX requests. For AJAX requests I am using the 
+        XmlHttpRequester object combined with a custom promise class. I think promises are excellent way to handle async operations.
+    </p>
+    <h4>Other Info</h4>
+    <p>
+        All of the images I am using are downloaded from internet.
+    </p>
+
 </div>
