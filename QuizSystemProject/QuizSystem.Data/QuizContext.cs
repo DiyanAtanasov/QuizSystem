@@ -19,6 +19,7 @@ namespace QuizSystem.Data
         public DbSet<Vote> Votes { get; set; }
         public DbSet<QuizResult> QuizResults { get; set; }
         public DbSet<UserMessage> UserMessages { get; set; }
+        public DbSet<Visitor> Visitors { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

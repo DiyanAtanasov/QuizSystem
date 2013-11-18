@@ -75,6 +75,11 @@ namespace QuizSystem.Web.Context
             get { return this.LoadRepository<UserMessage>(); }
         }
 
+        public IRepository<Visitor> Visitors
+        {
+            get { return this.LoadRepository<Visitor>(); }
+        }
+
         public int SaveChanges()
         {
             return this.context.SaveChanges();

@@ -15,6 +15,8 @@ namespace QuizSystem.Web.Controllers
     {
         public ActionResult Index()
         {
+            this.SaveVisitor();
+
             IQueryable<Quiz> query = this.context.Quizzes.All();
 
             if (this.User != null)
@@ -90,6 +92,37 @@ namespace QuizSystem.Web.Controllers
                 .Select(ModelConvertor.MessageToViewModel);
 
             return View(messages);
+        }
+
+        [NonAction]
+        private void SaveVisitor()
+        {
+            string userIp = GetIPAddress();
+
+            if (!this.context.Visitors.All().Any(x => x.VisitorAddress == userIp))
+            {
+                this.context.Visitors.Add(new Visitor { VisitorAddress = userIp });
+                this.context.SaveChanges();
+            }
+        }
+
+        [NonAction]
+        private string GetIPAddress()
+        {
+            System.Web.HttpContext context = System.Web.HttpContext.Current;
+
+            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                {
+                    return addresses[0];
+                }
+            }
+
+            return context.Request.ServerVariables["REMOTE_ADDR"];
         }
     }
 }

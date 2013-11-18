@@ -18,6 +18,7 @@ namespace QuizSystem.Web.Context
         IRepository<Comment> Comments { get; }
         IRepository<QuizResult> Results { get; }
         IRepository<UserMessage> Messages { get; }
+        IRepository<Visitor> Visitors { get; }
         int SaveChanges();
         void Dispose();
     }
